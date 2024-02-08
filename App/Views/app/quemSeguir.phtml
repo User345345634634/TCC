@@ -1,0 +1,42 @@
+<?php include 'navbar.phtml'; ?>
+
+<div class="container mt-5">
+	<div class="row pt-2">
+		
+		<div class="col-md-3">
+		</div>
+
+		<div class="col-md-6">
+
+			<?php foreach($this->view->usuarios as $indice_arr => $usuario) { ?>
+				<div class="row mb-2">
+					<div class="col">
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-6">
+										<span class="perfilPainelNome"><a href="/perfil?id_usuario=<?=$usuario['id']?>"><?= $usuario['nome'] ?></a></span>
+									</div>
+								
+									<div class="col-md-6 d-flex justify-content-end">
+										<div>
+											<?php if($usuario['seguindo_sn'] == 0) { ?>
+												<a href="/seguir?acao=seguir&id_usuario=<?=$usuario['id']?>"
+													class="btn btn-outline-primary">Seguir</a>
+											<?php } ?>
+
+											<?php if($usuario['seguindo_sn'] == 1) { ?>
+												<a href="/seguir?acao=deixar_de_seguir&id_usuario=<?=$usuario['id']?>"
+													class="btn btn-outline-danger">Deixar de seguir</a>
+											<?php } ?>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<?php } ?>
+		</div>
+	</div>
+</div>
